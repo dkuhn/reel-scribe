@@ -72,28 +72,6 @@ def get_liked_reels_urls(username, password):
 
 
 
-def convert_mp4_to_mp3(mp4_file, mp3_file=None):
-    """
-    Convert an MP4 file to MP3 format.
-
-    Args:
-        mp4_file (str): Path to the input MP4 file.
-        mp3_file (str, optional): Path to save the output MP3 file. Defaults to None, which will use the same name as mp4_file but with .mp3 extension.
-
-    Returns:
-        str: Path to the converted MP3 file.
-    """
-    from pydub import AudioSegment
-    import os
-
-    if mp3_file is None:
-        mp3_file = mp4_file.rsplit('.', 1)[0] + '.mp3'
-
-    audio = AudioSegment.from_file(mp4_file, format='mp4')
-    audio.export(mp3_file, format='mp3')
-    
-    return mp3_file
-
 
 def download_instagram_video(url, download_dir='.'):
     """"
@@ -206,7 +184,7 @@ if __name__ == "__main__":
 
 
     downloaded_files = download_instagram_video(args.url, args.dir)
-    """"
+    """    # Example output:
     downloaded_files = ['/tmp/DHrEj0JufKf/2025-03-26_18-43-13_UTC_DHrEj0JufKf.mp4',
                         '/tmp/DHrEj0JufKf/2025-03-26_18-43-13_UTC_DHrEj0JufKf.jpg',
                         '/tmp/DHrEj0JufKf/2025-03-26_18-43-13_UTC_DHrEj0JufKf.txt']
